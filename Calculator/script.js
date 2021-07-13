@@ -7,7 +7,9 @@ let y;
 let z;
 let t;
 let b;
-let o;
+let o='';
+let c;
+let u;
 const btn7 = document.querySelector("#btn5");
 const btn8 = document.querySelector("#btn6");
 const btn9 = document.querySelector("#btn7");
@@ -20,6 +22,7 @@ const btn3 = document.querySelector("#btn15");
 const btn0 = document.querySelector("#btn18");
 const btn00 = document.querySelector("#btn19");
 const btnC = document.querySelector("#btn1");
+const btnSilme = document.querySelector("#btn3");
 const btnCarpi = document.querySelector("#btn8");
 const btnEksi = document.querySelector("#btn12");
 const btnBol = document.querySelector("#btn4");
@@ -47,15 +50,19 @@ btn5.addEventListener("click", ()=>{
     input1Value.textContent=input1Value.textContent+5
 })
 btn4.addEventListener("click", ()=>{
-    if (input1Value!=''&&input2Value!=''){
-        input2Value.textContent='';
-        x="";
-        z='';
-        t='';
-        b='';
-        y='';
-        input1Value.textContent=4;
-    } else input1Value.textContent=input1Value.textContent+4
+    // if (o="1"){
+    //     input2Value.textContent='';
+    //     x='';
+    //     z='';
+    //     t='';
+    //     b='';
+    //     y='';
+    //     o='';
+    //     input1Value.textContent=4;
+    // } else {
+    //     input1Value.textContent=input1Value.textContent+4}
+        input1Value.textContent=input1Value.textContent+4
+    
 })
 btn3.addEventListener("click", ()=>{
     input1Value.textContent=input1Value.textContent+3
@@ -80,7 +87,20 @@ btnArtiEksi.addEventListener("click", ()=>{
 })
 
 btnCarpi.addEventListener("click", ()=>{
-    x = input1Value.textContent;
+    if(input2Value.textContent.includes('*')&&input1Value.textContent==''){alert("Click die Nummer");
+    input2Value=input2Value};
+    
+    if(input2Value.textContent!=''&&input1Value.textContent!=''){
+        
+        u=input1Value.textContent;
+        input2Value.textContent='';
+        input2Value.textContent=parseInt(x)*parseInt(u);
+        input1Value.textContent='';
+    }else if (input2Value.textContent!=''&& input1Value.textContent == ''){
+        x=input2Value.textContent;
+        input2Value.textContent=input2Value.textContent+'*'
+    } else {
+        x = input1Value.textContent;
     input2Value.textContent=input2Value.textContent+ input1Value.textContent+"*"
     // else {
     //     o=input1Value.textContent;
@@ -89,42 +109,77 @@ btnCarpi.addEventListener("click", ()=>{
     console.log(x);
 
     input1Value.textContent=""
+    
 //     input2Value.textContent=input2Value.textContent+{x}+"*"
-})
+}})
 btnEksi.addEventListener("click", ()=>{
-    if (y!=''){null}else input2Value.textContent=input2Value.textContent+ input1Value.textContent+"-";
+    // if(input2Value.textContent.includes("-")){alert("Click die Nummer");
+    // input2Value=input2Value};
+    // if (input1Value.textContent!=''&&input2Value.textContent!=''){alert("Click '=' ");
+    // input2Value=input2Value}else
+    if(input2Value.textContent!=''&&input1Value.textContent!=''){
+        
+        c=input1Value.textContent;
+        input2Value.textContent='';
+        input2Value.textContent=parseInt(z)-parseInt(c);
+        input1Value.textContent=''
+    } else if (input2Value.textContent!=''&& input1Value.textContent == ''){
+        z=input2Value.textContent;
+        input2Value.textContent=input2Value.textContent+'-'}else{
     z = input1Value.textContent;
+    input2Value.textContent=input2Value.textContent+ input1Value.textContent+"-";
+    
 
     input1Value.textContent=""
-})
+}})
 btnTopla.addEventListener("click", ()=>{
+    if(input2Value.textContent.includes("+"&&"-"&&"/"&&"*")){alert("Click die Nummer");
+    input2Value=input2Value};
+    if (input1Value.textContent!=''&&input2Value.textContent!=''){alert("Click '=' ");
+    input2Value=input2Value}else
     input2Value.textContent=input2Value.textContent+ input1Value.textContent+"+";
     t = input1Value.textContent;
 
     input1Value.textContent=""
 })
 btnBol.addEventListener("click", ()=>{
+    if(input2Value.textContent.includes("/","+")){alert("Click die Nummer");
+    input2Value=input2Value};
+    if (input1Value.textContent!=''&&input2Value.textContent!=''){alert("Click '=' ");
+    input2Value=input2Value}else
     input2Value.textContent=input2Value.textContent+ input1Value.textContent+"/";
     b = input1Value.textContent;
 
     input1Value.textContent=""
 })
 btnEsit.addEventListener("click", ()=>{
+    o="1"
     input2Value.textContent=input2Value.textContent+ input1Value.textContent;
     y = input1Value.textContent;
     
     if(x!=''){
-    input1Value.textContent=parseInt(x)*parseInt(y);
+    input2Value.textContent=parseInt(x)*parseInt(y);
+    input1Value.textContent='';
     
 }else if(z!=''){
-    input1Value.textContent=parseInt(z)-parseInt(y);
+    input2Value.textContent=parseInt(z)-parseInt(y);
+    input1Value.textContent='';
 }
 else if(t!=''){
-    input1Value.textContent=parseInt(t)+parseInt(y);
+    input2Value.textContent=parseInt(t)+parseInt(y);
+    input1Value.textContent='';
 }
 else if(b!=''){
-    input1Value.textContent=parseInt(b)/parseInt(y);
+    input2Value.textContent=parseInt(b)/parseInt(y);
+    input1Value.textContent='';
 }
+})
+btnSilme.addEventListener("click", ()=>{
+    if (input1Value.textContent==''){
+        input1Value.textContent=input2Value.textContent;
+        input2Value.textContent='';
+    }
+    input1Value.textContent= input1Value.textContent.substring(0,input1Value.textContent.length-1);
 })
 btnC.addEventListener("click", ()=>{
     input1Value.textContent=""
@@ -134,4 +189,5 @@ btnC.addEventListener("click", ()=>{
     t='';
     b='';
     y='';
+    o='';
 })
