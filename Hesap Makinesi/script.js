@@ -3,6 +3,6 @@ const inputEkrani=document.querySelector('#inp1');
 
 btnDgr.forEach(function(element){
     element.onclick=function(element){
-        inputEkrani.textContent+=this.textContent
+        inputEkrani.value+=this.textContent
     }
 });
