@@ -44,7 +44,8 @@ const btnBol = document.querySelector("#btn4");
 const btnTopla = document.querySelector("#btn16");
 const btnEsit = document.querySelector("#btn20");
 const btnArtiEksi = document.querySelector("#btn17");
-const btnArtiEksi = document.querySelector("#btn17");
+
+
 // btn7.onclick=function num (){
 //     input1Value.innerText = `7`
 //     console.log(input1Value.innerText);
