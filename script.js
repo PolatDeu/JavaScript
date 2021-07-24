@@ -39,20 +39,47 @@ const numberArray = [
 let previusOperant = '';
 let currentOperant = '';
 let operation = undefined;
+let temporaryOperand;
 
 function DisplayShow(){
     previusElement.innerHTML=previusOperant;
     currentElement.innerHTML=currentOperant;
 }
 function AppendNumber(number){
+    if (number==="." && currentOperant.includes(".")) return;
+    if (number === 0 && currentOperant ==="0") return;
+    if (currentOperant.length>5) return;
     currentOperant=currentOperant.toString()+number.toString();
     console.log(number)
     DisplayShow();
 }
 function ChooseOperation (selectedOperation){
+    if (temporaryOperand){
+        previusOperant=temporaryOperand.toString();
+        currentOperant='';
+        temporaryOperand='';
+        operation=selectedOperation;
+        DisplayShow();
+        return;
+    }
     operation=selectedOperation;
     previusOperant=currentOperant;
     currentOperant='';
+    DisplayShow();
+}
+function ClearAll(){
+    if (!previusOperant){
+        currentOperant=currentOperant.slice(0, currentOperant.length-1)
+    }else{
+    previusOperant='';
+    currentOperant='';
+    operation=undefined;
+    acButton.innerHTML='C'
+    }
+    DisplayShow();
+}
+function PlusMinus(){
+    currentOperant=currentOperant*-1;
     DisplayShow();
 }
 
@@ -60,6 +87,8 @@ function Calculate() {
     let result;
     const previus = parseFloat(previusOperant);
     const current = parseFloat(currentOperant);
+    if (operation) return;
+    if (isNaN(previus)|| isNaN(current))return;
     switch(operation){
         case "+":
             result = previus + current;
@@ -76,11 +105,15 @@ function Calculate() {
         default:
             break;
     }
+    // if (isNaN())
     currentOperant=result;
     previusOperant='';
     DisplayShow();
+    temporaryOperand=currentOperant;
 }
 
+acButton.addEventListener("click", ()=>ClearAll())
+pmButton.addEventListener("click", ()=>PlusMinus())
 
 additionButton.addEventListener("click", ()=>{
     ChooseOperation("+");
@@ -101,6 +134,11 @@ for (let i = 0; i < numberArray.length; i++) {
     number.addEventListener("click", ()=>{
         console.log("Number ", i)
         AppendNumber(i);
+        temporaryOperand='';
     })
     
 }
+decimalButton.addEventListener("click", ()=>{
+    AppendNumber(".");
+})
+equalButton.addEventListener("click", ()=>Calculate());
