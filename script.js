@@ -40,6 +40,7 @@ let previusOperant = '';
 let currentOperant = '';
 let operation = undefined;
 let temporaryOperand;
+let result;
 
 function DisplayShow(){
     previusElement.innerHTML=previusOperant;
@@ -84,7 +85,6 @@ function PlusMinus(){
 }
 
 function Calculate() {
-    let result;
     const previus = parseFloat(previusOperant);
     const current = parseFloat(currentOperant);
     if (operation) return;
@@ -108,6 +108,7 @@ function Calculate() {
     // if (isNaN())
     currentOperant=result;
     previusOperant='';
+    console.log("sonuc",previusOperant);
     DisplayShow();
     temporaryOperand=currentOperant;
 }
@@ -142,3 +143,5 @@ decimalButton.addEventListener("click", ()=>{
     AppendNumber(".");
 })
 equalButton.addEventListener("click", ()=>Calculate());
+console.log("sonuc",result);
+console.log("sonuc pre",previus);
