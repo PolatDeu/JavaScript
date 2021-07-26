@@ -143,5 +143,3 @@ decimalButton.addEventListener("click", ()=>{
     AppendNumber(".");
 })
 equalButton.addEventListener("click", ()=>Calculate());
-console.log("sonuc",result);
-console.log("sonuc pre",previus);
